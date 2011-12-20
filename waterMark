@@ -1,20 +1,16 @@
 #!/bin/bash
-
 ##---
-# Advansee
-#airballman
-#Created on : Sat Jun 11 22:15:32 CEST 2011
+# Julien Lengrand-Lambert
+# Created on : Sat Jun 11 22:15:32 CEST 2011
 #
 # DESCRIPTION : Script designed to automatically watermark all the images in a folder given a template. Resize images at the same time to make them fit with Piwigo's desires. 
-# EXAMPLE : ./waterMark in_folder out_folder wtermark_image
+# EXAMPLE : ./waterMark in_folder out_folder watermark_image
+#
+# IMAGEMAGICK COMMANDS:
+#   identify -format "%w,%h"foto.jpg 
+#   composite -gravity SouthWest -geometry +5+5 -size 2000x2000 site.png foto_new.jpg test.jpg
+#   convert -resize 1024 foto.jpg foto_new.jpg
 ##---
-
-#TODO : 
-#   Automatically check for background constrast and invert watermark color if needed
-
-#identify -format "%w,%h"foto.jpg 
-#composite -gravity SouthWest -geometry +5+5 -size 2000x2000 site.png foto_new.jpg test.jpg
-#convert -resize 1024 foto.jpg foto_new.jpg
 
 # Check whether imagemagick is installed
 hash identify 2>&- || { echo >&2 "imagemagick is required to use this script! Aborting."; exit 1; }
@@ -33,7 +29,6 @@ for file in $IN_REPO/*
 do
 	HEIGHT=$(identify -format "%h" ${file})
 	WIDTH=$(identify -format "%w" ${file})
-	
 	#echo "w: $WIDTH , h:$HEIGHT"
 
 	BASEFILE=$(basename $file)
