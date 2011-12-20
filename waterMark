@@ -10,8 +10,6 @@
 ##---
 
 #TODO : 
-#   must be available for jpg, jpeg, JPEG , . . . too ! 
-#   Adds output folder creation if needed
 #   Automatically check for background constrast and invert watermark color if needed
 
 #identify -format "%w,%h"foto.jpg 
@@ -23,8 +21,11 @@ OUT_REPO=$2
 WATER=$3
 echo " Input repo is : $IN_REPO"
 
+# creating output folder
+mkdir -pv $OUT_REPO
 
-
+SAVEIFS=$IFS # used to take care of files with spacenames
+IFS=$(echo -en "\n\b")
 for file in $IN_REPO/*
 do
 	HEIGHT=$(identify -format "%h" ${file})
@@ -65,5 +66,5 @@ do
 	composite -gravity $GRAV -geometry +10+10 $WATER $OUTNAME $OUTNAME
 	
 done
-
+IFS=$SAVEIFS
 exit 0
