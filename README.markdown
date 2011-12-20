@@ -9,7 +9,8 @@ The script should recognize all kinds of image formats, and correctly handle fil
 In addition, the script is designed to automatically recognize whether your image is in portrait or lanscape mode. The watermark is put in a different corner to better visual results. 
 
 The use of this script is pretty straightforward : 
-```Bash
+
+```sh
 $ waterMark in_folder out_folder watermark_image
 ```
 
@@ -23,7 +24,8 @@ The script also resize images in order to fit with [Piwigo](http://fr.piwigo.org
 ## Installation
 
 The only prerequisite to use this script is imagemagick : 
-```Bash
+
+```sh
 $ apt-get install imagemagick
 ```
 
@@ -31,7 +33,8 @@ You do not need to install this script in any way.
 You can use it from anywhere as long as you use __absolute paths!__
 
 A simple way to use waterMark from anywhere is to add it to your ~/bin folder; and give the script execution rights.
-```Bash
+
+```sh
 $ chmod +x ~/bin/waterMark
 ```
 This way, you will be able to run it directly in your terminal. 
