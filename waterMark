@@ -16,6 +16,9 @@
 #composite -gravity SouthWest -geometry +5+5 -size 2000x2000 site.png foto_new.jpg test.jpg
 #convert -resize 1024 foto.jpg foto_new.jpg
 
+# Check whether imagemagick is installed
+hash identify 2>&- || { echo >&2 "imagemagick is required to use this script! Aborting."; exit 1; }
+
 IN_REPO=$1
 OUT_REPO=$2
 WATER=$3
